@@ -1,1 +1,11 @@
 
+{
+    "severity": "MEDIUM",
+    "evaluation_type": "RUN_TIME",
+    "status": "ENABLED",
+    "resource_type" : ["aws_instance"],
+    "audit_procedure": "",
+    "logica_expressions": "@Engine(\"trino\");Resource(..r) :- snowflake_cwp_dev.iac_test.resource(..r); StatusCheck(value) = ( if value == \"PASSED\" then \"Yes\" else \"No\" ); AwsEc2(resource_id:, resource_name:, start_line:, end_line:, attributes:, skip_policies:, attribute_details:, resource_type:, file_name:, abs_path:) distinct:- Resource(attributes:, resource_id:, resource_name:, start_line:, end_line:, resource_type:, skip_policies:, attribute_details:, file_name:, abs_path:), \"aws_instance\" == resource_type; AWS_EC2_Belongs_To_VPC(Resource_Id: resource_id, Resource_Name: resource_name, \"Does EC2 instance belong to a VPC?\": status_check, Start_Line: start_line, End_Line: end_line, Status: status, Attribute_Line: attribute_start_line, Resource_Type: resource_type, File_Name: file_name, Abs_Path: abs_path) :- AwsEc2(resource_id:, resource_name:, start_line:, end_line:, attributes:, skip_policies:, attribute_details:, resource_type:, file_name:, abs_path:), vpc_sec_grp_check == JsonExtractScalar(attributes, \"$.vpc_security_group_ids\"), attribute_start_line == JsonExtractScalar(attribute_details, \"$.Attributes.vpc_security_group_ids.Expr.SrcRange.Start.Line\"), skipped == JsonArrayContains(skip_policies, \"aws_ec2_02\"), (IsNull(skipped) == true && IsNull(vpc_sec_grp_check) == false, status == \"PASSED\") | (IsNull(skipped) == true && IsNull(vpc_sec_grp_check) == true, status == \"FAILED\") | (skipped == true, status == \"SKIPPED\"), status_check == StatusCheck(status);",
+    "logica_predicate": "AWS_EC2_Belongs_To_VPC",
+    "remediation_procedure": ""
+}
