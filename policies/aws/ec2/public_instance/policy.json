@@ -1,5 +1,5 @@
 {
-    "policy_id": "ZS-AWS-EC2-0001",
+    "policy_id": "",
     "name": "Ensure that EC2 instance belongs to a VPC",
     "cloud_type": "AWS",
     "subtype": "Compute",
