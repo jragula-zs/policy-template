@@ -6,4 +6,16 @@
     "cloud_type": "GCP",
     "subtype": "Data Analytics",
     "description": "By default, BigQuery encrypts customer content stored at rest. BigQuery handles and manages this default encryption for you without any additional actions on your part. First, data in a BigQuery table is encrypted using a data encryption key. Then, those data encryption keys are encrypted with key encryption keys, which is known as envelope encryption. Key encryption keys do not directly encrypt your data but are used to encrypt the data encryption keys that Google uses to encrypt your data.\n\nIf you want to control encryption yourself, you can use customer-managed encryption keys (CMEK) for BigQuery. Instead of Google managing the key encryption keys that protect your data, you control and manage key encryption keys in Cloud KMS.",
+    "compliance_categories" : [
+        {
+            "name" : "cis",
+            "version" : "1.1",
+            "category" : "security"
+        },
+        {
+            "name" : "gdpr",
+            "version" : "1.0",
+            "category" : "network"
+        }
+    ]
 }
