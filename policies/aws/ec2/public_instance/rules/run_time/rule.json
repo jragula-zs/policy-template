@@ -1,6 +1,5 @@
 
 {
-    "severity": "MEDIUM",
     "evaluation_type": "RUN_TIME",
     "status": "ENABLED",
     "resource_type" : ["aws_instance"],
